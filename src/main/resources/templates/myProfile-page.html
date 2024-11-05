@@ -30,6 +30,38 @@
       text-align: center;
     }
 
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .profile-picture img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 3px solid #f5c43d;
+    }
+
+    .upload-button {
+      background-color: #f5c43d;
+      color: #121212;
+      font-size: 1em;
+      font-weight: 700;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .upload-button:hover {
+      background-color: #e0b037;
+    }
+
     .profile-info {
       margin-bottom: 15px;
     }
@@ -61,19 +93,40 @@
     .back-button:hover {
       background-color: #e0b037;
     }
+
+    #fileInput {
+      display: none;
+    }
   </style>
 </head>
 <body>
+
 <div class="profile-container">
   <h1>My Profile</h1>
+
+  <form action="/home/profile/upload-profile-image" method="post" enctype="multipart/form-data" class="profile-header">
+    <div class="profile-picture">
+      <img th:src="'data:image/jpeg;base64,' + ${profilePicture}" alt="Profile Picture">
+    </div>
+
+    <label for="fileInput" class="upload-button">Upload</label>
+    <input type="file" id="fileInput" name="profilePicture" accept="image/*" onchange="this.form.submit()">
+  </form>
+  <div th:if="${errorMessage}" class="error-message">
+    <p th:text="${errorMessage}"></p>
+  </div>
+
   <div class="profile-info">
     <p><label>Name:</label> <span th:text="${user.firstname}">Artur</span></p>
     <p><label>Surname:</label> <span th:text="${user.lastname}">Surname</span></p>
     <p><label>Email:</label> <span th:text="${user.email}">artur@example.com</span></p>
     <p><label>Total Poops:</label> <span th:text="${countPoop}">42</span></p>
   </div>
+
   <div class="poop-level" th:text="${user.level}">Level: Poop Master</div>
+
   <button class="back-button" onclick="location.href='/home'">Back to Home</button>
 </div>
+
 </body>
 </html>
