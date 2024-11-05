@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+<body>
+<div class="navbar">
+    <a href="/home">Home</a>
+    <div>
+        <a href="home/profile">My Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="icon">
+        <img src="/img/poop.png" class="icon-image">
+    </div>
+    <div class="title" th:text="${lastPoopDuration}"></div>
+    <div class="subtitle">last poop time</div>
+    <button class="add-button" onclick="location.href='home/add-poop'">Add</button>
+</div>
+
+<div class="container">
+    <div class="calendar">
+        <h2>Calendar</h2>
+        <div id="calendar"></div>
+    </div>
+</div>
+
+<script>
+    // Initialize the Flatpickr calendar with month and year selection
+    const poopedDates = new Set();
+
+    const calendar = flatpickr("#calendar", {
+        inline: true,
+        mode: "multiple",
+        dateFormat: "Y-m-d",
+        defaultDate: [...poopedDates],
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+            const dateStr = dayElem.dateObj.toISOString().split('T')[0];
+            if (poopedDates.has(dateStr)) {
+                dayElem.classList.add("pooped-day");
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
