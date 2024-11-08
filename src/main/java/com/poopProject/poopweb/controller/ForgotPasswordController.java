@@ -10,12 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
@@ -52,7 +50,7 @@ public class ForgotPasswordController {
         Optional<ResetPassword> resetTokenOpt = resetPasswordService.findToken(token);
         if (resetTokenOpt.isPresent() && !resetPasswordService.IsExpired(resetTokenOpt.get())) {
             model.addAttribute("token", token);
-            return "new-password";
+            return "new_password";
         } else {
             return "redirect:/forgot-password?error=invalidToken";
         }
