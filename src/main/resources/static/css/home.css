@@ -11,18 +11,18 @@
       height: 100vh;
   }
 
-.navbar {
-    width: 100%;
-    background-color: #222;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    z-index: 100;
-}
+ .navbar {
+     width: 100%;
+     background-color: #222;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 8px 15px;
+     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.5);
+     position: fixed;
+     top: 0;
+     z-index: 100;
+ }
 
 .navbar a {
     color: #f1c40f;
@@ -79,12 +79,41 @@
     text-shadow: 0 0 5px #f1c40f;
 }
 
+ .profile-picture {
+     position: relative;
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     overflow: hidden;
+     border: 2px solid #f5c43d;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background-color: #f5c43d;
+ }
+
+
+ .profile-picture img,
+ .default-icon {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 50%;
+ }
+
+ .default-icon {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 50%;
+ }
+
 .icon-image {
-    width: 50px; /* Zmenšení ikony */
-    border: 3px solid #f1c40f; /* Žlutый контур */
-    border-radius: 50%; /* Заобление контуры */
+    width: 50px;
+    border: 3px solid #f1c40f;
+    border-radius: 50%;
     display: block;
-    margin: 0 auto 10px; /* Выцентровка и размещение над текстом */
+    margin: 0 auto 10px;
 }
 
 .add-button {

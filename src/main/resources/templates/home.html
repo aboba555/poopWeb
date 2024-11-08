@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +12,15 @@
 
 <body>
 <div class="navbar">
-    <a href="/home">Home</a>
+    <a href="#" th:href="@{/logout}" >Logout</a>
     <div>
+        <a href="/home">Home</a>
         <a href="home/profile">My Profile</a>
-        <a href="/logout">Logout</a>
+
+    </div>
+    <div class="profile-picture">
+        <img th:if="${profilePicture != null}" th:src="'data:image/jpeg;base64,' + ${profilePicture}" alt="Profile Picture">
+        <img th:if="${profilePicture == null}" src="/img/default-icon.png" alt="Default Icon" class="default-icon">
     </div>
 </div>
 
@@ -36,7 +41,7 @@
 </div>
 
 <script>
-    // Initialize the Flatpickr calendar with month and year selection
+
     const poopedDates = new Set();
 
     const calendar = flatpickr("#calendar", {
