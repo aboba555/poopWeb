@@ -26,6 +26,8 @@ public class ResetPassword {
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    private boolean active = true;
+
     public ResetPassword(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }

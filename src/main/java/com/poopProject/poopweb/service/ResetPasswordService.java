@@ -28,7 +28,12 @@ public class ResetPasswordService {
     }
 
     public boolean IsExpired(ResetPassword resetPassword){
-        return resetPassword.getCreatedAt().plus(TOKEN_VALIDATION_DURATION).isBefore(LocalDateTime.now());
+        boolean expired = resetPassword.getCreatedAt().plus(TOKEN_VALIDATION_DURATION).isBefore(LocalDateTime.now());
+        if (expired && resetPassword.isActive()) {
+            resetPassword.setActive(false);
+            repository.save(resetPassword);
+        }
+        return expired;
     }
 
     public Optional<ResetPassword> findToken(String token) {
