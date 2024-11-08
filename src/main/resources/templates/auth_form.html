@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Authentication</title>
     <link rel="stylesheet" href="/css/authentication.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -13,23 +13,23 @@
         <div class="user_options-text">
             <div class="user_options-unregistered">
                 <h2 class="user_unregistered-title">Don't have an account?</h2>
-                <p class="user_unregistered-text">Create now!</p>
-                <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+                <p class="user_unregistered-text">Create one now!</p>
+                <button class="user_unregistered-signup" id="signup-button">Sign Up</button>
             </div>
 
             <div class="user_options-registered">
-                <h2 class="user_registered-title">Already have a account!</h2>
-                <p class="user_registered-text">Get started..</p>
-                <button class="user_registered-login" id="login-button">Login</button>
+                <h2 class="user_registered-title">Already have an account?</h2>
+                <p class="user_registered-text">Get started right away.</p>
+                <button class="user_registered-login" id="login-button">Log In</button>
             </div>
         </div>
 
         <div class="user_options-forms" id="user_options-forms">
             <div class="user_forms-login">
-                <h2 class="forms_title">Login</h2>
+                <h2 class="forms_title">Log In</h2>
 
                 <div class="feedback-message success" th:if="${param.logout}" style="display: flex;">
-                    You have been logged out successfully.
+                    You have successfully logged out.
                 </div>
                 <div class="feedback-message error" th:if="${param.error}" style="display: flex;">
                     Invalid email or password.
@@ -68,14 +68,13 @@
                         </div>
                     </fieldset>
                     <div class="forms_buttons">
-                        <input type="submit" value="Sign up" class="forms_buttons-action">
+                        <input type="submit" value="Sign Up" class="forms_buttons-action">
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
-
 
 <script src="/js/auth.js"></script>
 </body>

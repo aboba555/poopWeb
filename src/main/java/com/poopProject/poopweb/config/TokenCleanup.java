@@ -15,7 +15,7 @@ public class TokenCleanup {
 
     @Scheduled(fixedRate = 86400000)
     public void cleanupExpiredTokens() {
-        LocalDateTime expirationThreshold = LocalDateTime.now().minusDays(1);
+        LocalDateTime expirationThreshold = LocalDateTime.now().minusHours(1);
         repository.deleteByCreatedAtBeforeAndActiveIsFalse(expirationThreshold);
     }
 }
