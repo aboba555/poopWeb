@@ -9,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -18,7 +17,8 @@ import java.util.Base64;
 @Controller
 @RequestMapping("/home")
 @AllArgsConstructor
-public class myProfileController {
+public class MyProfileController {
+
     PoopService poopService;
     UserRepository userRepository;
 
@@ -36,12 +36,12 @@ public class myProfileController {
             } else {
                 System.out.println("Failed to upload profile picture: The file is empty.");
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
         return "redirect:/home/profile";
     }
+
 
     @GetMapping("/profile")
     public String showMyProfile(Model model) {
@@ -59,7 +59,7 @@ public class myProfileController {
         model.addAttribute("countPoop", countPoop);
         model.addAttribute("profilePicture", base64Image);
 
-        return "myProfile-page";
+        return "my_profile_page";
     }
 
 

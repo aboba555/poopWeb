@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -29,14 +30,18 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register","/login","/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/register","/login","/forgot-password","/reset-password/**","/new-password","/change-password","/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .successHandler(myAuthenticationHandler())
-                        .permitAll());
+                        .permitAll())
+                .logout(form -> form
+                        .invalidateHttpSession(true).clearAuthentication(true)
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutSuccessUrl("/login?logout").permitAll());
 
 
 

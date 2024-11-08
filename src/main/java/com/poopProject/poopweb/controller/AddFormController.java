@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/home")
-public class addFormController {
+public class AddFormController {
     private PoopService poopService;
 
     @GetMapping("/add-poop")
     public String showAddForm(@ModelAttribute("poop") Poop poop){
-        return "addPoop-form";
+        return "add_poop_form";
     }
 
     @PostMapping("/add-poop")

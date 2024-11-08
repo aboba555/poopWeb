@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Authentication</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/authentication.css">
 
 </head>
 <body>
@@ -27,6 +27,14 @@
         <div class="user_options-forms" id="user_options-forms">
             <div class="user_forms-login">
                 <h2 class="forms_title">Login</h2>
+
+                <div class="feedback-message success" th:if="${param.logout}" style="display: flex;">
+                    You have been logged out successfully.
+                </div>
+                <div class="feedback-message error" th:if="${param.error}" style="display: flex;">
+                    Invalid email or password.
+                </div>
+
                 <form class="forms_form" method="post" th:action="@{/login}">
                     <fieldset class="forms_fieldset">
                         <div class="forms_field">
@@ -37,7 +45,7 @@
                         </div>
                     </fieldset>
                     <div class="forms_buttons">
-                        <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+                        <a type="button" class="forms_buttons-forgot" href="/forgot-password">Forgot password?</a>
                         <input type="submit" value="Log In" class="forms_buttons-action">
                     </div>
                 </form>
