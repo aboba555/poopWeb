@@ -13,7 +13,7 @@ public class TokenCleanup {
 
     private final ResetPasswordRepository repository;
 
-    @Scheduled(fixedRate = 86400000)
+    @Scheduled(fixedRate = 600)
     public void cleanupExpiredTokens() {
         LocalDateTime expirationThreshold = LocalDateTime.now().minusHours(1);
         repository.deleteByCreatedAtBeforeAndActiveIsFalse(expirationThreshold);
