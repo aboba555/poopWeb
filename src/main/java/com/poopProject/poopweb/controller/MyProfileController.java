@@ -24,6 +24,7 @@ public class MyProfileController {
 
     @PostMapping("/profile/upload-profile-image")
     public String uploadProfilePicture(@RequestParam("profilePicture") MultipartFile file) {
+
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String username = authentication.getName();
@@ -34,7 +35,7 @@ public class MyProfileController {
                 userRepository.save(user);
                 System.out.println("Profile picture uploaded successfully for user: " + username);
             } else {
-                System.out.println("Failed to upload profile picture: The file is empty.");
+                System.out.println("Failed to upload profile picture: The file is empty or too big.");
             }
         } catch (IOException e) {
             e.printStackTrace();
