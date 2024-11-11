@@ -33,6 +33,7 @@ public class ForgotPasswordController {
     @PostMapping("/reset-password")
     public String processForgetPassword(@RequestParam("email") String email) {
         Optional<User> userOpt = userRepository.findByEmail(email);
+
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             String token = resetPasswordService.createToken(user);
