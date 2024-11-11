@@ -33,11 +33,11 @@ public class ForgotPasswordController {
     @PostMapping("/reset-password")
     public String processForgetPassword(@RequestParam("email") String email) {
         Optional<User> userOpt = userRepository.findByEmail(email);
+
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             String token = resetPasswordService.createToken(user);
-            String resetLink = "http://localhost:8080/reset-password?token=" + token;
-
+            String resetLink = "https://poopweb-production.up.railway.app/reset-password?token=" + token;
             emailService.sendResetPasswordEmail(email, resetLink);
             System.out.println("we send you email to: " + email);
         }
