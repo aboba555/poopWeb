@@ -9,6 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.List;
 
@@ -46,11 +49,21 @@ public class User implements UserDetails {
         this.lastname = lastname;
         this.email = email;
         this.password = password;
+        this.profilePicture = loadDefaultProfilePicture();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(level.name()));
+    }
+
+    private byte[] loadDefaultProfilePicture() {
+        try {
+            return Files.readAllBytes(Paths.get("src/main/resources/static/img/151782.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
