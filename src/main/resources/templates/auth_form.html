@@ -35,6 +35,10 @@
                     Invalid email or password.
                 </div>
 
+                <div class="feedback-message success" th:if="${param.passwordResetSuccess}" style="display: flex;">
+                    You have c changed password.
+                </div>
+
                 <form class="forms_form" method="post" th:action="@{/login}">
                     <fieldset class="forms_fieldset">
                         <div class="forms_field">

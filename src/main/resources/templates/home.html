@@ -16,8 +16,8 @@
     <div>
         <a href="/home">Home</a>
         <a href="home/profile">My Profile</a>
-
     </div>
+
     <div class="profile-picture">
         <img th:if="${profilePicture != null}" th:src="'data:image/jpeg;base64,' + ${profilePicture}" alt="Profile Picture">
         <img th:if="${profilePicture == null}" src="/img/default-icon.png" alt="Default Icon" class="default-icon">

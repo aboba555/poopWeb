@@ -12,6 +12,10 @@
 <div class="profile-container">
   <h1>My Profile</h1>
 
+  <div class="feedback-message success" th:if="${param.uploadedImage}" style="display: flex;">
+    Successfully uploaded photo.
+  </div>
+
   <form action="/home/profile/upload-profile-image" method="post" enctype="multipart/form-data" class="profile-header">
 
     <div class="profile-picture">
