@@ -40,7 +40,7 @@ public class MyProfileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/home/profile";
+        return "redirect:/home/profile?uploadedImage";
     }
 
 
