@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -24,7 +25,6 @@ public class MyProfileController {
 
     @PostMapping("/profile/upload-profile-image")
     public String uploadProfilePicture(@RequestParam("profilePicture") MultipartFile file) {
-
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String username = authentication.getName();
@@ -37,8 +37,9 @@ public class MyProfileController {
             } else {
                 System.out.println("Failed to upload profile picture: The file is empty or too big.");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
         return "redirect:/home/profile?uploadedImage";
     }
