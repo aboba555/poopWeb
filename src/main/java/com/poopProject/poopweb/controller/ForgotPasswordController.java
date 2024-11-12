@@ -48,7 +48,7 @@ public class ForgotPasswordController {
     @GetMapping("/reset-password")
     public String showNewPasswordPage(@RequestParam("token") String token, Model model) {
         Optional<ResetPassword> resetTokenOpt = resetPasswordService.findToken(token);
-        if (resetTokenOpt.isPresent() && !resetPasswordService.IsExpired(resetTokenOpt.get())) {
+        if (resetTokenOpt.isPresent() && !resetPasswordService.isExpired(resetTokenOpt.get())) {
             model.addAttribute("token", token);
             return "new_password";
         } else {
@@ -63,7 +63,7 @@ public class ForgotPasswordController {
                                  @RequestParam("newPassword") String newPassword,
                                  @RequestParam("email") String email) {
         Optional<ResetPassword> resetTokenOpt = resetPasswordService.findToken(token);
-        if (resetTokenOpt.isPresent() && !resetPasswordService.IsExpired(resetTokenOpt.get())) {
+        if (resetTokenOpt.isPresent() && !resetPasswordService.isExpired(resetTokenOpt.get())) {
             ResetPassword resetToken = resetTokenOpt.get();
             User user = resetToken.getUser();
             user.setPassword(passwordEncoder.encode(newPassword));
