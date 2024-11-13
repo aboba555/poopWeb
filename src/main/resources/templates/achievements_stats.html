@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements & Stats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="/css/achievements-stats.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="achievements-container">
+  <h1>Achievements</h1>
+
+  <div class="achievement" th:each="achievement : ${achievements}">
+    <div class="achievement-icon">
+      <!-- Conditional display of images based on achievement key -->
+      <img th:if="${achievement.key} == 'One Poop'" th:src="@{/img/achievement1.webp}" alt="Achievement Icon">
+      <img th:if="${achievement.key} == 'Five Poops'" th:src="@{/img/achievement3.webp}" alt="Achievement Icon">
+      <img th:if="${achievement.key} == 'Ten Poops'" th:src="@{/img/achievement4.webp}" alt="Achievement Icon">
+      <img th:if="${achievement.key} == 'Master Pooper'" th:src="@{/img/achievement2.webp}" alt="Achievement Icon">
+      <img th:if="${achievement.key} != 'One Poop' and ${achievement.key} != 'Five Poops' and ${achievement.key} != 'Ten Poops' and ${achievement.key} != 'Master Pooper'" th:src="@{/images/default.png}" alt="Achievement Icon">
+    </div>
+    <div class="achievement-details">
+      <div class="achievement-name" th:text="${achievement.key}">Achievement Name</div>
+      <div class="achievement-status" th:text="${achievement.value}">Status</div>
+      <div class="achievement-date">Unlocked on Date</div>
+      <div class="achievement-percentage">9.0% of players have this achievement</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <h1>Statistics</h1>
+
+    <div class="stat">
+      <div class="stat-name">Total Poops</div>
+      <div class="stat-value">Number</div>
+    </div>
+    <div class="stat">
+      <div class="stat-name">Average Weight</div>
+      <div class="stat-value">Medium</div>
+    </div>
+    <div class="stat">
+      <div class="stat-name">Most Common Color</div>
+      <div class="stat-value">Brown</div>
+    </div>
+  </div>
+  <button class="back-button" onclick="location.href='/home'">Back to Home</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: #b0b0b0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.achievements-container {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    color: #e3e3e3;
+    text-align: center;
+}
+
+.achievements-container h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #f5c43d;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(245, 196, 61, 0.1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #3a3a3a;
+    transition: background-color 0.3s;
+}
+
+.achievement:hover {
+    background-color: rgba(245, 196, 61, 0.2);
+}
+
+.achievement-icon img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.achievement-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+}
+
+.achievement-name {
+    font-weight: 700;
+    color: #f5c43d;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.achievement-status {
+    font-size: 0.9em;
+    color: #b0b0b0;
+    margin-bottom: 5px;
+}
+
+.achievement-date,
+.achievement-percentage {
+    font-size: 0.8em;
+    color: #a0a0a0;
+}
+
+.stats {
+    margin-top: 20px;
+}
+
+.stats h1 {
+    font-size: 1.5em;
+    color: #f5c43d;
+    margin-bottom: 15px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.stat:last-child {
+    border-bottom: none;
+}
+
+.stat-name {
+    font-weight: 700;
+    color: #e3e3e3;
+}
+
+.stat-value {
+    font-size: 1em;
+    color: #f5c43d;
+}
+
+.back-button {
+    background-color: #f5c43d;
+    color: #121212;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.back-button:hover {
+    background-color: #e0b037;
+}
