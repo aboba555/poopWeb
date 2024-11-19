@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,6 @@
 
   <div class="achievement" th:each="achievement : ${achievements}">
     <div class="achievement-icon">
-      <!-- Conditional display of images based on achievement key -->
       <img th:if="${achievement.key} == 'One Poop'" th:src="@{/img/achievement1.webp}" alt="Achievement Icon">
       <img th:if="${achievement.key} == 'Five Poops'" th:src="@{/img/achievement3.webp}" alt="Achievement Icon">
       <img th:if="${achievement.key} == 'Ten Poops'" th:src="@{/img/achievement4.webp}" alt="Achievement Icon">
@@ -24,8 +23,6 @@
     <div class="achievement-details">
       <div class="achievement-name" th:text="${achievement.key}">Achievement Name</div>
       <div class="achievement-status" th:text="${achievement.value}">Status</div>
-      <div class="achievement-date">Unlocked on Date</div>
-      <div class="achievement-percentage">9.0% of players have this achievement</div>
     </div>
   </div>
 
@@ -34,16 +31,16 @@
 
     <div class="stat">
       <div class="stat-name">Total Poops</div>
-      <div class="stat-value">Number</div>
+      <div class="stat-value" th:text="${countPoop}"></div>
     </div>
     <div class="stat">
-      <div class="stat-name">Average Weight</div>
-      <div class="stat-value">Medium</div>
+      <div class="stat-name">First poop</div>
+      <div class="stat-value" th:text="${firstPoop}"></div>
     </div>
-    <div class="stat">
-      <div class="stat-name">Most Common Color</div>
-      <div class="stat-value">Brown</div>
-    </div>
+<!--    <div class="stat">-->
+<!--      <div class="stat-name">Most Common Color</div>-->
+<!--      <div class="stat-value" th:text="${mostPopularColor}"></div>-->
+<!--    </div>-->
   </div>
   <button class="back-button" onclick="location.href='/home'">Back to Home</button>
 </div>

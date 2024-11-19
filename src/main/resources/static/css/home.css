@@ -11,6 +11,75 @@ body {
     height: 100vh;
 }
 
+.activity-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.activity-list th,
+.activity-list td {
+    padding: 15px;
+    text-align: left;
+    color: #f4f4f4;
+}
+
+.activity-list th {
+    background-color: #333;
+    font-weight: bold;
+}
+
+.activity-list tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+.activity-list tr:hover {
+    background-color: #3b3b3b;
+}
+
+.weight-category {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.weight-category.light {
+    color: #27ae60;
+}
+
+.weight-category.medium {
+    color: #f39c12;
+}
+
+.weight-category.heavy {
+    color: #e74c3c;
+}
+
+.activity-level {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.activity-level.high {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.activity-level.medium {
+    background-color: #f39c12;
+    color: white;
+}
+
+.activity-level.low {
+    background-color: #27ae60;
+    color: white;
+}
+
+
 .navbar {
     width: 100%;
     background-color: #222;
@@ -75,12 +144,12 @@ body {
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #f1c40f; /* Обводка чуть толще */
+    border: 2px solid #f1c40f;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f5c43d;
-    margin-right: 15px; /* Отступ от края */
+    margin-right: 15px;
 }
 
 .profile-picture img,

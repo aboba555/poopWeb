@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
 @AllArgsConstructor
 public class MainPageController {
     private UserRepository userRepository;
-
     private PoopRepository poopRepository;
 
 
@@ -31,7 +33,6 @@ public class MainPageController {
         String username = authentication.getName();
         User user = userRepository.findByEmail(username).orElseThrow(() -> new RuntimeException("User not found"));
         Poop lastPoop = poopRepository.findTopByUserOrderByCreatedAtDesc(user);
-
 
         String base64Image = null;
         if (user.getProfilePicture() != null) {
@@ -49,6 +50,18 @@ public class MainPageController {
         } else {
             model.addAttribute("lastPoopDuration", "No records found");
         }
+
+        List<Poop> activityData = poopRepository.findAllByUserOrderByCreatedAtAsc(user);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+        List<Map<String, String>> formattedActivityData = activityData.stream()
+                .map(poop -> Map.of(
+                        "createdAt", poop.getCreatedAt().format(formatter),
+                        "color", poop.getColor(),
+                        "weight", poop.getWeight()
+                ))
+                .toList();
+
+        model.addAttribute("activityData", formattedActivityData);
 
         return "home";
     }
