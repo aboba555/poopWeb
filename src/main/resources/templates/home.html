@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Calendar</title>
+    <title>Interactive Activity Tracker</title>
     <link rel="stylesheet" href="/css/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 
 <body>
@@ -20,8 +18,8 @@
     </div>
 
     <div class="profile-picture">
-            <img th:if="${profilePicture != null}" th:src="'data:image/jpeg;base64,' + ${profilePicture}" alt="Profile Picture">
-            <img th:if="${profilePicture == null}" src="/img/default-icon.png" alt="Default Icon" class="default-icon">
+        <img th:if="${profilePicture != null}" th:src="'data:image/jpeg;base64,' + ${profilePicture}" alt="Profile Picture">
+        <img th:if="${profilePicture == null}" src="/img/default-icon.png" alt="Default Icon" class="default-icon">
     </div>
 </div>
 
@@ -29,33 +27,39 @@
     <div class="icon">
         <img src="/img/poop.png" class="icon-image">
     </div>
-    <div class="title" th:text="${lastPoopDuration}"></div>
-    <div class="subtitle">last poop time</div>
+    <div class="title" th:text="${lastPoopDuration}">Time since last poop</div>
+    <div class="subtitle">Last poop time</div>
     <button class="add-button" onclick="location.href='home/add-poop'">Add</button>
 </div>
 
 <div class="container">
-    <div class="calendar">
-        <h2>Calendar</h2>
-        <div id="calendar"></div>
+    <div class="activity-list">
+        <h2>Activity Overview</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Color</th>
+                <th>Weight</th>
+                <th>Activity Level</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="poop : ${activityData}">
+                <td th:text="${poop.createdAt}">10 Nov 2024</td>
+                <td th:text="${poop.color}">Brown</td>
+                <td th:text="${poop.weight}" class="weight-category">Light</td>
+                <td>
+        <span class="activity-level"
+              th:classappend="${poop.weight == 'heavy'} ? 'high' : (${poop.weight == 'medium'} ? 'medium' : 'low')">
+        </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
-<script>
-    const poopedDates = new Set();
-    const calendar = flatpickr("#calendar", {
-        inline: true,
-        mode: "multiple",
-        dateFormat: "Y-m-d",
-        defaultDate: [...poopedDates],
-        onDayCreate: function(dObj, dStr, fp, dayElem) {
-            const dateStr = dayElem.dateObj.toISOString().split('T')[0];
-            if (poopedDates.has(dateStr)) {
-                dayElem.classList.add("pooped-day");
-            }
-        }
-    });
-</script>
-
+<script src="/js/activity.js"></script>
 </body>
 </html>
