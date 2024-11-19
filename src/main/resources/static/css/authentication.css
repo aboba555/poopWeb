@@ -1,5 +1,4 @@
 @charset "utf-8";
-/* CSS Document */
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -72,7 +71,7 @@ input::placeholder {
     background-color: rgba(0, 128, 0, 0.3);
 }
 
-/* Анимации */
+
 @-webkit-keyframes bounceLeft {
     0% { transform: translate3d(100%, -50%, 0); }
     50% { transform: translate3d(-30px, -50%, 0); }
@@ -104,7 +103,7 @@ input::placeholder {
     height: 100vh;
     background-color: #1e1e1e;
     background-size: cover;
-    padding-top: 40px; /* Подняли блок выше */
+    padding-top: 40px;
 }
 
 .user_options-container {
@@ -176,7 +175,7 @@ input::placeholder {
 .user_options-forms .user_forms-login,
 .user_options-forms .user_forms-signup {
     position: absolute;
-    top: 30px; /* Подняли форму выше */
+    top: 30px;
     left: 40px;
     width: calc(100% - 80px);
     opacity: 0;
@@ -191,7 +190,7 @@ input::placeholder {
 }
 
 .user_options-forms .forms_title {
-    margin-bottom: 30px; /* Уменьшили отступ для улучшения компоновки */
+    margin-bottom: 30px;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1em;
@@ -201,7 +200,7 @@ input::placeholder {
 }
 
 .user_options-forms .forms_field:not(:last-of-type) {
-    margin-bottom: 15px; /* Уменьшили отступ между полями */
+    margin-bottom: 15px;
 }
 
 .user_options-forms .forms_field-input {
@@ -224,7 +223,7 @@ input::placeholder {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px; /* Уменьшили отступ сверху для блока с кнопкой */
+    margin-top: 20px;
 }
 
 .user_options-forms .forms_buttons-forgot {
