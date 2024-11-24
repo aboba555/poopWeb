@@ -34,9 +34,14 @@
                 <div class="feedback-message error" th:if="${param.error}" style="display: flex;">
                     Invalid email or password.
                 </div>
-
+                <div class="feedback-message error" th:if="${param.unknownEmail}" style="display: flex;">
+                    The email address is already in use.
+                </div>
                 <div class="feedback-message success" th:if="${param.passwordResetSuccess}" style="display: flex;">
-                    You have c changed password.
+                    You have changed password.
+                </div>
+                <div class="feedback-message error" th:if="${param.passwordIsShort}" style="display: flex;">
+                    Password is too short.
                 </div>
 
                 <form class="forms_form" method="post" th:action="@{/login}">
