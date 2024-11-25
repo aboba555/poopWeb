@@ -31,7 +31,7 @@ public class AchievementsController {
         String email = authentication.getName();
         User user = userRepository.findByEmail(email).orElseThrow( () -> new RuntimeException("User not found"));
         Long countPoop = poopService.countByUser(user);
-        Optional<Poop> firstPoop = poopRepository.findFirstByUserOrderByCreatedAtDesc(user);
+        Optional<Poop> firstPoop = poopRepository.findFirstByUserOrderByCreatedAtAsc(user);
 
         if (firstPoop.isPresent()) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
