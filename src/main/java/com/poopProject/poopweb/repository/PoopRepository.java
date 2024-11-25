@@ -14,6 +14,6 @@ public interface PoopRepository extends JpaRepository<Poop,Long> {
     Long countByUser (User user);
     Optional<Poop> findFirstByUserOrderByCreatedAtAsc(User user);
 
-    List<Poop> findAllByUserOrderByCreatedAtAsc(User user);
+    List<Poop> findAllByUserOrderByCreatedAtDesc(User user);
 
 }
