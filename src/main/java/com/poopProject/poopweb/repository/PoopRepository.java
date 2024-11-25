@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface PoopRepository extends JpaRepository<Poop,Long> {
     Poop findTopByUserOrderByCreatedAtDesc(User user);
     Long countByUser (User user);
-    Optional<Poop> findFirstByUserOrderByCreatedAtDesc(User user);
+    Optional<Poop> findFirstByUserOrderByCreatedAtAsc(User user);
 
     List<Poop> findAllByUserOrderByCreatedAtAsc(User user);
 
