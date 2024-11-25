@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="/css/add-poop.css">
 </head>
 <body>
-<form action="#" th:action="@{/home/add-poop}" method="post" th:object="${poop}">
+<form th:action="@{/home/add-poop}" method="post" th:object="${poop}">
   <div class="entry-form">
     <h2>Add Poop Entry</h2>
     <div class="form-group">
-      <label for="form">Form (Wide Selection)</label>
-      <select th:field="*{form}" id="form">
+      <label for="form">Form</label>
+      <select id="form" th:field="*{form}">
         <option value="Round">Round</option>
         <option value="Sausage">Sausage-shaped</option>
         <option value="Other">Other</option>
@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <label for="color">Color</label>
-      <select th:field="*{color}" id="color">
+      <select id="color" th:field="*{color}">
         <option value="yellow">Yellow</option>
         <option value="brown">Brown</option>
         <option value="green">Green</option>
@@ -29,11 +29,17 @@
     </div>
     <div class="form-group">
       <label for="weight">Weight</label>
-      <select th:field="*{weight}" id="weight">
+      <select id="weight" th:field="*{weight}">
         <option value="light">Light</option>
         <option value="medium">Medium</option>
         <option value="heavy">Heavy</option>
       </select>
+    </div>
+    <div class="form-group">
+      <label for="painLevel">Pain Level</label>
+      <input type="range" min="1" max="5" value="1" id="painLevel" th:field="*{painLevel}" class="pain-level"
+             oninput="updatePainColor(this)">
+      <div id="painDescription" class="pain-description">🦄 Zero pain</div>
     </div>
     <button type="submit" class="save-button">Save</button>
   </div>
@@ -43,29 +49,28 @@
   Entry saved successfully! 💩
 </div>
 
-<div id="poopIcon" class="poop-icon hidden">💩</div>
-
 <script>
-  document.querySelector('.save-button').addEventListener('click', function (e) {
-    e.preventDefault();
-
-    const message = document.getElementById('confirmationMessage');
-    message.classList.add('show');
-
-    const poopIcon = document.getElementById('poopIcon');
-    poopIcon.style.left = e.pageX + 'px';
-    poopIcon.style.top = e.pageY + 'px';
-    poopIcon.classList.remove('hidden');
-    poopIcon.classList.add('fly');
-
-    setTimeout(() => {
-      message.classList.remove('show');
-      poopIcon.classList.add('hidden');
-      poopIcon.classList.remove('fly');
-      document.querySelector('form').submit();
-    }, 1000);
-  });
+  function updatePainColor(range) {
+    const descriptions = [
+      "🦄 Zero pain",
+      "🤔 Minor discomfort",
+      "😐 Medium pain",
+      "😖 Severe pain",
+      "💀 Maximum pain"
+    ];
+    const colors = [
+      "#00ff00", // Green
+      "#aaff00", // Light Green
+      "#ffaa00", // Orange
+      "#ff5500", // Dark Orange
+      "#ff0000"  // Red
+    ];
+    const descriptionElement = document.getElementById('painDescription');
+    descriptionElement.textContent = descriptions[range.value - 1];
+    range.style.background = `linear-gradient(90deg, ${colors[range.value - 1]} ${range.value * 20}%, #ddd ${range.value * 20}%)`;
+    descriptionElement.style.color = colors[range.value - 1];
+    descriptionElement.style.transform = `scale(${1 + range.value * 0.1})`;
+  }
 </script>
-
 </body>
 </html>

@@ -51,7 +51,7 @@ public class MainPageController {
             model.addAttribute("lastPoopDuration", "No records found");
         }
 
-        List<Poop> activityData = poopRepository.findAllByUserOrderByCreatedAtAsc(user);
+        List<Poop> activityData = poopRepository.findAllByUserOrderByCreatedAtDesc(user);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
         List<Map<String, String>> formattedActivityData = activityData.stream()
                 .map(poop -> Map.of(

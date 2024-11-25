@@ -30,14 +30,17 @@ public class Poop {
 
     private String weight;
 
+    private String painLevel;
+
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt;
 
 
-    public Poop(String form, String color, String weight) {
+    public Poop(String form, String color, String weight,String painLevel) {
         this.form = form;
         this.color = color;
         this.weight = weight;
+        this.painLevel = painLevel;
     }
 }
