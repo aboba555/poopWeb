@@ -30,7 +30,7 @@ public class Poop {
 
     private String weight;
 
-    private String painLevel;
+    private String painLevel = "1";
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false, nullable = false)
