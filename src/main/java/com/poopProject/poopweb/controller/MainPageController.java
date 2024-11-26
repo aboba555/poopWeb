@@ -25,6 +25,10 @@ public class MainPageController {
     private UserRepository userRepository;
     private PoopRepository poopRepository;
 
+    @GetMapping("/")
+    public String redirectingToHomePage(){
+        return "redirect:/home";
+    }
 
     @GetMapping("/home")
     public String showHomePage(Model model){
