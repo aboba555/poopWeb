@@ -57,6 +57,7 @@ public class MainPageController {
                 .map(poop -> Map.of(
                         "createdAt", poop.getCreatedAt().format(formatter),
                         "color", poop.getColor(),
+                        "painLevel", poop.getPainLevel(),
                         "weight", poop.getWeight()
                 ))
                 .toList();
