@@ -41,7 +41,7 @@
                 <th>Date</th>
                 <th>Color</th>
                 <th>Weight</th>
-                <th>Activity Level</th>
+                <th>Pain Level</th>
             </tr>
             </thead>
             <tbody>
@@ -51,7 +51,7 @@
                 <td th:text="${poop.weight}" class="weight-category">Light</td>
                 <td>
         <span class="activity-level"
-              th:classappend="${poop.weight == 'heavy'} ? 'high' : (${poop.weight == 'medium'} ? 'medium' : 'low')">
+              th:classappend="${poop.painLevel == '5' || poop.painLevel ==  '4'} ? 'high' : (${poop.painLevel == '3' || poop.painLevel == '2'} ? 'medium' : 'low')">
         </span>
                 </td>
             </tr>
