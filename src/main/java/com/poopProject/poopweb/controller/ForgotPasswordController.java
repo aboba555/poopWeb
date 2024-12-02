@@ -37,7 +37,7 @@ public class ForgotPasswordController {
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             String token = resetPasswordService.createToken(user);
-            String resetLink = "https://poopweb-production.up.railway.app/reset-password?token=" + token;
+            String resetLink = "https://poopweb.site/reset-password?token=" + token;
             emailService.sendResetPasswordEmail(email, resetLink);
             System.out.println("we send you email to: " + email);
         }
